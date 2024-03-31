@@ -1,5 +1,8 @@
 package entity;
 
+/**
+ * Enum representing different characters in a game, along with their respective lanes.
+ */
 public enum CharacterEntity {
 
     YASUO ("Yasuo", "Mid"),
@@ -56,15 +59,28 @@ public enum CharacterEntity {
     private final String name;
     private final String lane;
 
+    /**
+     * Constructs a CharacterEntity enum with the given name and lane.
+     * @param name The name of the character.
+     * @param lane The lane where the character typically plays.
+     */
     CharacterEntity(String name, String lane) {
         this.name = name;
         this.lane = lane;
     }
 
+    /**
+     * Gets the name of the character.
+     * @return The name of the character.
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Gets the lane where the character typically plays.
+     * @return The lane of the character.
+     */
     public String getLane() {
         return lane;
     }

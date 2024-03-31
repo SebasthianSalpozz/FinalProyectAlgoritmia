@@ -3,8 +3,14 @@ package Data;
 import entity.CharacterEntity;
 import entity.UserEntity;
 
+/**
+ * Simulates a database with user entities.
+ */
 public class UserEntityData {
 
+    /**
+     * Array representing user data.
+     */
     public static UserEntity[] userList = new UserEntity[]{
             new UserEntity("SilverWolf", 35, "platino-diamante", "las y lan",
                     CharacterEntity.YASUO),
