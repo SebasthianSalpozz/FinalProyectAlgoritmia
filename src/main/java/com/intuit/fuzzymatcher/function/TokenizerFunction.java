@@ -26,6 +26,19 @@ public class TokenizerFunction {
                 .map(token -> new Token<String>(token, element));
     }
 
+    public static Function<Element<String>, Stream<Token<String>>> serveTokenizer() {
+        return new Function<Element<String>, Stream<Token<String>>>() {
+            @Override
+            public Stream<Token<String>> apply(Element<String> element) {
+                String[] tokens = element.getPreProcessedValue().split(":");
+                Stream.Builder<Token<String>> tokenStreamBuilder = Stream.builder();
+                for (String token : tokens) {
+                    tokenStreamBuilder.add(new Token<>(token, element));
+                }
+                return tokenStreamBuilder.build();
+            }
+        };
+    }
     public static Function<Element<String>, Stream<Token<String>>> wordSoundexEncodeTokenizer() {
         return (element) -> Arrays.stream(element.getPreProcessedValue().toString().split("\\s+"))
                 .map(val -> {

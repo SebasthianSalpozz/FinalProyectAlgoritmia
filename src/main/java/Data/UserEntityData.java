@@ -12,33 +12,6 @@ public class UserEntityData {
      * Array representing user data.
      */
     public static UserEntity[] userList = new UserEntity[]{
-            /*
-            America:
-            Norteamérica (NA)
-            Latinoamérica Norte (LAN)
-            Latinoamérica Sur (LAS)
-            Europa:
-            Europa Oeste (EUW)
-            Europa Nórdica y del Este (EUNE)
-            Asia:
-            Corea (KR):
-            Japón (JP)
-            China (CN)
-            Sudeste Asiático (EUW)
-            Otras regiones:
-            Oceanía (OCE)
-            Rusia (EUW)
-            Turquía (EUW)
-
-            Hierro
-            Bronce
-            Plata
-            Oro
-            Platino
-            Diamante
-            Maestro
-            Challenger
-             */
             new UserEntity("SilverWolf", 35, "Challenger", "LAS",
                     CharacterEntity.YASUO),
             new UserEntity("DarkKnight", 28, "Oro", "lan",

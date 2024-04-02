@@ -1,7 +1,15 @@
 package com.intuit.fuzzymatcher.domain;
 
 
+import com.intuit.fuzzymatcher.component.MatchService;
+import com.intuit.fuzzymatcher.function.PreProcessFunction;
+import com.intuit.fuzzymatcher.function.TokenizerFunction;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static com.intuit.fuzzymatcher.domain.MatchType.EQUALITY;
@@ -22,7 +30,8 @@ public enum ElementType {
     PHONE,
     NUMBER,
     DATE,
-    AGE;
+    AGE,
+    SERVER;
 
     protected Function getPreProcessFunction() {
         switch (this) {
@@ -39,6 +48,8 @@ public enum ElementType {
             case NUMBER:
             case AGE:
                 return numberPreprocessing();
+            case SERVER:
+                return serverNormalization();
             default:
                 return none();
         }
@@ -56,6 +67,8 @@ public enum ElementType {
                 return triGramTokenizer();
             case PHONE:
                 return decaGramTokenizer();
+            case SERVER:
+                return serveTokenizer();
             default:
                 return valueTokenizer();
         }
