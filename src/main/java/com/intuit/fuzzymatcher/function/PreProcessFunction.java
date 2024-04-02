@@ -149,4 +149,11 @@ public class PreProcessFunction<T>{
     public static Function none() {
         return obj -> obj;
     }
+
+    public static Function<String, String> eloPreprocessing() {
+        return (str) -> {
+            str = str.replaceAll("\\d+$", "");
+            return str.toLowerCase();
+        };
+    }
 }
