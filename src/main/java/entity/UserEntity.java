@@ -66,4 +66,15 @@ public class UserEntity {
     public CharacterEntity getMainCharacters() {
         return mainCharacters;
     }
+
+    public String toString() {
+        return "UserEntity{" +
+                "name='" + name + '\'' +
+                ", level=" + level +
+                ", elo='" + elo + '\'' +
+                ", server='" + server + '\'' +
+                ", mainCharacters=" + mainCharacters +
+                '}';
+    }
+
 }

@@ -21,6 +21,7 @@ public class Dictionary {
     public static final Map<String, String> addressDictionary = getAddressDictionary();
 
     public static final Map<String, String> nameDictionary = getNameDictionary();
+    public static final Map<String, String> serversDictionary = getServersDictionary();
 
 
     private static Map<String, String>  getAddressDictionary() {
@@ -38,6 +39,17 @@ public class Dictionary {
         try {
             ClassLoader classLoader = Dictionary.class.getClassLoader();
             BufferedReader br = new BufferedReader(new InputStreamReader(classLoader.getResourceAsStream("name-dictionary.txt")));
+            return getDictionary(br);
+        } catch (IOException e) {
+            LOGGER.error("could not load name dictonary", e);
+            throw new MatchException("could not load name dictonary", e);
+        }
+    }
+
+    private static Map<String, String> getServersDictionary() {
+        try {
+            ClassLoader classLoader = Dictionary.class.getClassLoader();
+            BufferedReader br = new BufferedReader(new InputStreamReader(classLoader.getResourceAsStream("servers-dictionary.txt")));
             return getDictionary(br);
         } catch (IOException e) {
             LOGGER.error("could not load name dictonary", e);
