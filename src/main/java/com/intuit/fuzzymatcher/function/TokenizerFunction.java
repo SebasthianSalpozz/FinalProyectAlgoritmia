@@ -79,4 +79,8 @@ public class TokenizerFunction {
     public static Function<Element<String>, Stream<Token<String>>> chainTokenizers(Function<Element<String>, Stream<Token<String>>>... tokenizers) {
         return element -> Arrays.stream(tokenizers).flatMap(fun -> fun.apply(element));
     }
+
+    public static Function<Element<String>, Stream<Token<String>>> noneTokenizer() {
+        return (element) -> Stream.of(new Token<>(element.getPreProcessedValue(), element));
+    }
 }
