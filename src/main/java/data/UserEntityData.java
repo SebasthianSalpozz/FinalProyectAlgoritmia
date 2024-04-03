@@ -12,25 +12,25 @@ public class UserEntityData {
      * Array representing user data.
      */
     public static UserEntity[] userList = new UserEntity[]{
-            new UserEntity("SilverWolf", 35, "Challenger", "LAS",
+            new UserEntity("SilverWolf", 35, "platino-diamante", "las y lan",
                     CharacterEntity.YASUO),
-            new UserEntity("DarkKnight", 28, "Oro", "lan",
+            new UserEntity("DarkKnight", 28, "oro", "lan",
                     CharacterEntity.AHRI),
-            new UserEntity("ShadowNinja", 40, "Diamante", "las",
+            new UserEntity("ShadowNinja", 40, "diamante", "las",
                     CharacterEntity.TRISTANA),
-            new UserEntity("FrostMage", 31, "Platino", "Jp",
+            new UserEntity("FrostMage", 31, "platino hierro", "las - jap",
                     CharacterEntity.FIZZ),
-            new UserEntity("NightmareQueen", 25, "Maestro", "KR",
+            new UserEntity("NightmareQueen", 25, "plata", "lan y lan",
                     CharacterEntity.MORGANA),
-            new UserEntity("BloodAssassin", 29, "Plata", "EuW",
+            new UserEntity("BloodAssassin", 29, "oroplata", "laslan",
                     CharacterEntity.DARIUS),
-            new UserEntity("FireGoddess", 33, "Hierro", "EUw",
+            new UserEntity("FireGoddess", 33, "platino-challenger", "lan",
                     CharacterEntity.ASHE),
-            new UserEntity("ThunderLord", 27, "Plata", "LAS",
+            new UserEntity("ThunderLord", 27, "plata", "las",
                     CharacterEntity.LUX),
-            new UserEntity("IronWarrior", 30, "Diamante", "LAN",
+            new UserEntity("IronWarrior", 30, "diamante", "lan",
                     CharacterEntity.GAREN),
-            new UserEntity("WindRanger", 26, "Bronce", "NA",
+            new UserEntity("WindRanger", 26, "platino hierro maestro", "las",
                     CharacterEntity.JINX)
     };
 
