@@ -1,4 +1,4 @@
-package com.intuit.fuzzymatcher.MainTestDiego;
+package com.intuit.fuzzymatcher.Main;
 
 import com.intuit.fuzzymatcher.component.MatchService;
 import com.intuit.fuzzymatcher.domain.*;
