@@ -1,5 +1,6 @@
 package com.intuit.fuzzymatcher.entity;
 
+import entity.CharacterEntity;
 import entity.UserEntity;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -9,12 +10,12 @@ import java.util.List;
 public class UserEntityTest {
     @Test
     public void testFriendListRecomendation() {
-        UserEntity pedro = new UserEntity("Pedro", 10, "Gold", "NA", null);
-        UserEntity Luis = new UserEntity("Luis", 10, "Gold", "NA", null);
-        UserEntity luca = new UserEntity("Luca",11, "Gold","NA", null);
-        UserEntity felix = new UserEntity("Felix", 11, "Gold","NA", null);
-        UserEntity Alex = new UserEntity("Alex",11, "Silver","NA", null);
-        UserEntity Lorenza = new UserEntity("Lorenza",11, "Silver","NA", null);
+        UserEntity pedro = new UserEntity("Pedro", 10, "Gold", "NA", CharacterEntity.YASUO);
+        UserEntity Luis = new UserEntity("Luis", 10, "Gold", "NA", CharacterEntity.AHRI);
+        UserEntity luca = new UserEntity("Luca",11, "Gold","NA", CharacterEntity.TRISTANA);
+        UserEntity felix = new UserEntity("Felix", 11, "Gold","NA", CharacterEntity.FIZZ);
+        UserEntity Alex = new UserEntity("Alex",11, "Silver","NA", CharacterEntity.MORGANA);
+        UserEntity Lorenza = new UserEntity("Lorenza",11, "Silver","NA", CharacterEntity.DARIUS);
     
         pedro.addFriend(Luis);
         pedro.addFriend(Alex);
@@ -44,10 +45,6 @@ public class UserEntityTest {
         ana.addFriend(david);
 
         List<UserEntity> amigosRecomendados = maria.friendListRecomendation();
-        System.out.println("Amigos recomendados para MAria:");
-        for (UserEntity usuario : amigosRecomendados) {
-            System.out.println(usuario.getName());
-        }
         assertEquals(1, amigosRecomendados.size());
         assertTrue(amigosRecomendados.contains(david));
     }

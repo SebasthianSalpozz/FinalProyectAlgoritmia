@@ -84,4 +84,18 @@ public enum CharacterEntity {
     public String getLane() {
         return lane;
     }
+
+    /**
+     * Gets the character entity by name.
+     * @param name The name of the character.
+     * @return The character entity if found, null otherwise.
+     */
+    public static CharacterEntity getCharacterByName(String name) {
+        for (CharacterEntity character : CharacterEntity.values()) {
+            if (character.getName().equalsIgnoreCase(name)) {
+                return character;
+            }
+        }
+        return null;
+    }
 }
