@@ -1,6 +1,7 @@
 package features.characterFInder;
 
-import Data.UserEntityData;
+import algorithms.FiniteAutomata_Modified;
+import data.UserEntityData;
 import entity.CharacterEntity;
 import entity.UserEntity;
 import java.util.HashSet;

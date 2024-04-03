@@ -1,6 +1,8 @@
 package com.intuit.fuzzymatcher.component;
 
 import com.intuit.fuzzymatcher.domain.Document;
+import com.intuit.fuzzymatcher.domain.Element;
+import com.intuit.fuzzymatcher.domain.ElementClassification;
 import com.intuit.fuzzymatcher.domain.Match;
 import org.apache.commons.collections4.CollectionUtils;
 
@@ -88,10 +90,13 @@ public class MatchService {
      * @return a map containing the grouping of each document id and its corresponding matches
      */
     public Map<String, List<Match<Document>>> applyMatchByDocId(List<Document> documents) {
+
         DocumentMatch documentMatch = new DocumentMatch();
         return documentMatch.matchDocuments(documents.stream())
                 .collect(Collectors.groupingBy(match -> match.getData().getKey()));
     }
+
+
 
     /**
      * Use this to check duplicates for bulk inserts, where a list of new Documents is checked against existing list

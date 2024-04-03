@@ -1,4 +1,4 @@
-package Data;
+package data;
 
 import entity.CharacterEntity;
 import entity.UserEntity;

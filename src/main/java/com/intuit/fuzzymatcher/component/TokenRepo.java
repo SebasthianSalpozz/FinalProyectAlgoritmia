@@ -2,10 +2,10 @@ package com.intuit.fuzzymatcher.component;
 
 import com.intuit.fuzzymatcher.domain.Element;
 import com.intuit.fuzzymatcher.domain.ElementClassification;
-import com.intuit.fuzzymatcher.domain.ElementType;
 import com.intuit.fuzzymatcher.domain.MatchType;
 import com.intuit.fuzzymatcher.domain.Token;
 import com.intuit.fuzzymatcher.exception.MatchException;
+import algorithms.FiniteAutomata_Modified;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -45,7 +45,11 @@ public class TokenRepo {
 
         Map<Object, Set<Element>> tokenElementSet;
 
+        Map<Token, Set<Element>> finiteAutomataList;
+
         TreeSet<Object> tokenBinaryTree;
+
+
 
         private final Double AGE_PCT_OF = 10D;
         private final Double DATE_PCT_OF = 15777e7D; // 5 years of range
@@ -58,6 +62,8 @@ public class TokenRepo {
                     tokenBinaryTree = new TreeSet<>();
                 case EQUALITY:
                     tokenElementSet = new ConcurrentHashMap<>();
+                case FINITE_AUTOMATA:
+                    finiteAutomataList = new HashMap<>();
             }
         }
 
@@ -65,10 +71,35 @@ public class TokenRepo {
             switch (matchType) {
                 case NEAREST_NEIGHBORS:
                     tokenBinaryTree.add(token.getValue());
+                    break;
                 case EQUALITY:
                     Set<Element> elements = tokenElementSet.getOrDefault(token.getValue(), new HashSet<>());
                     elements.add(element);
                     tokenElementSet.put(token.getValue(), elements);
+                    break;
+                case FINITE_AUTOMATA:
+
+                    FiniteAutomata_Modified finiteAutomataModified = new FiniteAutomata_Modified();
+                    if (finiteAutomataList.isEmpty()){
+                        Set<Element> newElementSet = new HashSet<>();
+                        newElementSet.add(element);
+                        finiteAutomataList.put(token, newElementSet);
+                    } else {
+                        for (Token key : finiteAutomataList.keySet()) {
+                            String compareWith = key.getElement().getValue().toString();
+                            String elementString = (String) token.getElement().getValue();
+                            if (finiteAutomataModified.match(compareWith, elementString) || finiteAutomataModified.match(elementString, compareWith)){
+                                Set<Element> elementsSet = finiteAutomataList.get(key);
+                                elementsSet.add(element);
+                                finiteAutomataList.put(key, elementsSet);
+                            }
+                        }
+                        Set<Element> newElementSet = new HashSet<>();
+                        newElementSet.add(element);
+                        finiteAutomataList.put(token, newElementSet);
+                    }
+
+                    System.out.println("FINITE AUTOMATA:   " + finiteAutomataList);
             }
         }
 
@@ -91,6 +122,9 @@ public class TokenRepo {
                     return tokenBinaryTree.subSet(tokenRange.lower, true, tokenRange.higher, true)
                             .stream()
                             .flatMap(val -> tokenElementSet.get(val).stream()).collect(Collectors.toSet());
+
+                case FINITE_AUTOMATA:
+                    return finiteAutomataList.get(token);
 
             }
             return null;

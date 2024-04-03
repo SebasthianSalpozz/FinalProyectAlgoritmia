@@ -11,6 +11,10 @@ public class ElementMatch {
 
     private final TokenRepo tokenRepo;
 
+    public TokenRepo getTokenRepo() {
+        return tokenRepo;
+    }
+
     public ElementMatch() {
         this.tokenRepo = new TokenRepo();
     }
@@ -18,17 +22,22 @@ public class ElementMatch {
     public Set<Match<Element>> matchElement(Element element) {
         Set<Match<Element>> matchElements = new HashSet<>();
         Map<Element, Integer> elementTokenScore = new HashMap<>();
-
         List<Token> tokens = element.getTokens();
         tokens.stream()
                 .filter(token -> BooleanUtils.isNotFalse(element.getDocument().isSource()))
                 .forEach(token -> {
                     elementThresholdMatching(token, elementTokenScore, matchElements);
                 });
-
         tokens.forEach(token -> tokenRepo.put(token));
-
         return matchElements;
+    }
+
+    public void matchElementFiniteAutomata(Element element){
+        Set<Match<Element>> matches = new HashSet<>();
+        List<Token> tokens = element.getTokens();
+        for (Token token : tokens){
+            tokenRepo.put(token);
+        }
     }
 
     private void elementThresholdMatching(Token token, Map<Element, Integer> elementTokenScore, Set<Match<Element>> matchingElements) {
