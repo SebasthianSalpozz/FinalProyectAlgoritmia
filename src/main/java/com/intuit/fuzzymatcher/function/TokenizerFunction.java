@@ -26,8 +26,20 @@ public class TokenizerFunction {
                 .map(token -> new Token<String>(token, element));
     }
 
+    /**
+     * Returns a function to tokenize elements of type {@code String}.
+     *
+     * @return A function that takes a {@code Element<String>} as input and returns a stream of tokens corresponding to the preprocessed elements of the input element.
+     * of tokens corresponding to the preprocessed elements of the input element.
+     */
     public static Function<Element<String>, Stream<Token<String>>> serveTokenizer() {
         return new Function<Element<String>, Stream<Token<String>>>() {
+            /**
+             * Tokenizes the input element and returns a stream of tokens.
+             *
+             * @param element The element of type {@code Element<String>} to be tokenized.
+             * @return A stream of tokens corresponding to the preprocessed elements of the input element.
+             */
             @Override
             public Stream<Token<String>> apply(Element<String> element) {
                 String[] tokens = element.getPreProcessedValue().split(":");

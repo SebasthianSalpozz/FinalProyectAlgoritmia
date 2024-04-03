@@ -140,6 +140,12 @@ public class PreProcessFunction<T>{
         };
     }
 
+    /**
+     * Returns a function to normalize server names.
+     *
+     * @return A function that takes a {@code String} as input and returns its normalized form.
+     * corresponding to the server dictionary.
+     */
     public static Function<String, String> serverNormalization() {
         return str -> Utils.getNormalizedString(str, Dictionary.serversDictionary);
     }

@@ -46,6 +46,13 @@ public class Dictionary {
         }
     }
 
+    /**
+     * Gets a server dictionary from a text file.
+     *
+     * @return A {@code Map<String, String>} containing the server dictionary, where.
+     * the key is the name of the server and the value is its address.
+     * @throws MatchException If an error occurs while loading the server dictionary.
+     */
     private static Map<String, String> getServersDictionary() {
         try {
             ClassLoader classLoader = Dictionary.class.getClassLoader();

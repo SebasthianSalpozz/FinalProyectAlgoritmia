@@ -15,88 +15,75 @@ import static com.intuit.fuzzymatcher.domain.ElementType.*;
 public class TopPlayers {
     public static void main(String[] args) {
         String[][] input = {
-                { "KR", "Maestro", "Figue"},
+
                 { "Corea", "Maestro", "Silver"},
-                { "COREA", "Maestro", "Wolf"},
 
                 {"NA", "Hierro", "Jorge"},
+                {"LAN", "Oro", "Zafiro"},
                 {"NORTE AMERICA", "Bronce", "Trueno"},
                 {"Norte America", "Plata", "Rayo"},
-                {"NorTE AMERICA", "Oro", "Luna"},
-                {"NORTE america", "Platino", "Estrella"},
-                {"NA", "Diamante", "Sombra"},
-                {"NA", "Maestro", "Brisa"},
-
-
-                {"LAN", "Hierro", "Centella"},
-                {"LAN", "Bronce", "Aurora"},
-                {"LAN", "Plata","Canela"},
-                {"LAN", "Oro", "Zafiro"},
-                {"LAN", "Platino", "Neblina"},
-                {"LAN", "Diamante", "Marfil"},
+                {"KR", "Maestro", "Áureo"},
                 {"LAN", "Maestro", "Jade"},
+                {"NorTE AMERICA", "Oro", "Luna"},
+                {"LAS", "Bronce", "Azabache"},
+                {"NA", "Diamante", "Sombra"},
+                {"LAN", "Bronce", "Aurora"},
+                {"LAS", "Diamante", "Alba"},
+                {"LAN", "Plata","Canela"},
+                {"LAN", "Platino", "Neblina"},
 
+                { "KR", "Maestro", "Figue"},
 
                 {"LAS", "Hierro", "Amatista"},
-                {"LAS", "Bronce", "Azabache"},
-                {"LAS", "Plata", "Coral"},
-                {"LAS", "Oro", "Ámbar"},
-                {"LAS", "Platino", "Pétalo"},
-                {"LAS", "Diamante", "Alba"},
-                {"LAS", "Maestro", "Penumbra"},
-
-
-                {"EUW", "Hierro", "Orquídea"},
                 {"EUW", "Bronce", "Topacio"},
+                {"LAS", "Plata", "Coral"},
+                {"JP", "Oro", "Silex"},
+                {"LAS", "Maestro", "Penumbra"},
+                {"LAS", "Oro", "Ámbar"},
                 {"EUW", "Plata", "Carmesí"},
+                {"LAS", "Platino", "Pétalo"},
+                {"EUW", "Hierro", "Orquídea"},
+                {"OCE", "Oro", "Melancolía"},
                 {"EUW", "Oro", "Esencia"},
-                {"EUW", "Platino", "Valquiria"},
+                {"NORTE america", "Platino", "Estrella"},
                 {"EUW", "Diamante", "Nimbo"},
+                {"EUNE", "Plata", "Enigma"},
                 {"EUW", "Maestro", "Fénix"},
 
+                { "COREA", "Maestro", "Wolf"},
 
                 {"EUNE", "Hierro", "Grial"},
-                {"EUNE", "Bronce", "Relámpago"},
-                {"EUNE", "Plata", "Enigma"},
+                {"EUW", "Platino", "Valquiria"},
                 {"EUNE", "Oro", "Albor"},
+                {"OCE", "Bronce", "Luminaria"},
                 {"EUNE", "Platino", "Zodiaco"},
+                {"OCE", "Hierro", "Cenit"},
                 {"EUNE", "Diamante", "Caoba"},
+                {"JP", "Diamante", "Nimbus"},
                 {"EUNE", "Maestro", "Alud"},
-
-
                 {"KR", "Hierro", "Quimera"},
-                {"KR", "Bronce", "Lucero"},
+                {"JP", "Plata", "Querubín"},
                 {"KR", "Plata", "Argón"},
                 {"KR", "Oro", "Píxel"},
+                {"LAN", "Hierro", "Centella"},
                 {"KR", "Platino", "Nebuloso"},
+                {"KR", "Bronce", "Lucero"},
                 {"KR", "Diamante", "Caramelo"},
-                {"KR", "Maestro", "Áureo"},
-
-
+                {"NA", "Maestro", "Brisa"},
                 {"JP", "Hierro", "Helio"},
+                {"LAN", "Diamante", "Marfil"},
                 {"JP", "Bronce", "Anochecer"},
-                {"JP", "Plata", "Querubín"},
-                {"JP", "Oro", "Silex"},
+                {"OCE", "Platino", "Azotea"},
                 {"JP", "Platino", "Vendaval"},
-                {"JP", "Diamante", "Nimbus"},
+                {"CN", "Diamante", "Celaje"},
                 {"JP", "Maestro", "Corinto"},
-
-
                 {"CN", "Hierro","Magnolia"},
                 {"CN", "Bronce", "Hibisco"},
                 {"CN", "Plata", "Sándalo"},
+                {"EUNE", "Bronce", "Relámpago"},
                 {"CN", "Oro", "Bambú"},
-                {"CN", "Diamante", "Celaje"},
                 {"CN", "Maestro", "Boreal"},
-
-
-                {"OCE", "Hierro", "Cenit"},
-                {"OCE", "Bronce", "Luminaria"},
-
-                {"OCE", "Oro", "Melancolía"},
-                {"OCE", "Platino", "Azotea"},
                 {"OCE", "Maestro", "Ébano"},
-
         };
 
         List<Document> documentList = Arrays.asList(input).stream().map(contact -> {
