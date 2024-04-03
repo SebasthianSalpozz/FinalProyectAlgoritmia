@@ -1,4 +1,4 @@
-package entity;
+package com.intuit.fuzzymatcher.entity;
 
 /**
  * Enum representing different characters in a game, along with their respective lanes.

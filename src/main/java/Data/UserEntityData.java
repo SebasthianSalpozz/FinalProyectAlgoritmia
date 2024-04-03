@@ -1,7 +1,7 @@
 package Data;
 
-import entity.CharacterEntity;
-import entity.UserEntity;
+import com.intuit.fuzzymatcher.entity.CharacterEntity;
+import com.intuit.fuzzymatcher.entity.UserEntity;
 
 /**
  * Simulates a database with user entities.

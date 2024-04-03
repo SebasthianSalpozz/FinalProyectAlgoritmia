@@ -1,10 +1,12 @@
 package features.characterFInder;
 
 import Data.UserEntityData;
-import entity.CharacterEntity;
-import entity.UserEntity;
+
 import java.util.HashSet;
 import java.util.Set;
+
+import com.intuit.fuzzymatcher.entity.CharacterEntity;
+import com.intuit.fuzzymatcher.entity.UserEntity;
 
 /**
  * This class provides methods to find characters associated with users based on specific criteria.
