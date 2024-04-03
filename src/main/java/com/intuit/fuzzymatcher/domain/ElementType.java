@@ -16,6 +16,7 @@ import static com.intuit.fuzzymatcher.domain.MatchType.EQUALITY;
 import static com.intuit.fuzzymatcher.domain.MatchType.NEAREST_NEIGHBORS;
 import static com.intuit.fuzzymatcher.function.PreProcessFunction.*;
 import static com.intuit.fuzzymatcher.function.TokenizerFunction.*;
+import static com.intuit.fuzzymatcher.function.TokenizerElo.eloSoundexEncodeTokenizer;
 
 /**
  * Enum to define different types of Element.
@@ -31,7 +32,9 @@ public enum ElementType {
     NUMBER,
     DATE,
     AGE,
-    SERVER;
+    SERVER,
+    ELO;
+
 
     protected Function getPreProcessFunction() {
         switch (this) {
@@ -50,6 +53,8 @@ public enum ElementType {
                 return numberPreprocessing();
             case SERVER:
                 return serverNormalization();
+            case ELO:
+                return eloPreprocessing();
             default:
                 return none();
         }
@@ -69,6 +74,8 @@ public enum ElementType {
                 return decaGramTokenizer();
             case SERVER:
                 return serveTokenizer();
+            case ELO:
+                return eloSoundexEncodeTokenizer();
             default:
                 return valueTokenizer();
         }
