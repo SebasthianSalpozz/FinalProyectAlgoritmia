@@ -71,4 +71,8 @@ public class Dictionary {
                     .map(s -> s.split(":", 2))
                     .collect(Collectors.toMap(arr -> arr[0].trim(), arr -> arr[1].trim(), (a1, a2) -> a1));
     }
+
+    public static void main(String[] args) {
+        System.out.println(getNameDictionary());
+    }
 }

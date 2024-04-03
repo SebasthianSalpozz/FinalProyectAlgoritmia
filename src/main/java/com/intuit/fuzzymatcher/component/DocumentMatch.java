@@ -28,7 +28,6 @@ public class DocumentMatch {
      * @return Stream of Match of Document type objects
      */
     public Stream<Match<Document>> matchDocuments(Stream<Document> documents) {
-
         Stream<Match<Document>> documentMatch = documents.flatMap(document -> {
             Set<Element> elements = document.getPreProcessedElement();
             Set<Match<Element>> eleMatches = elements.stream()
@@ -36,9 +35,20 @@ public class DocumentMatch {
                     .collect(Collectors.toSet());
             return documentThresholdMatching(document, eleMatches);
         });
-
         return documentMatch;
     }
+
+    public TokenRepo matchDocumentFiniteAutomata(List<Document> documents){
+        ArrayList<Match<Element>> aux = new ArrayList<>();
+        for (Document document : documents){
+            for (Element element : document.getElements()){
+                elementMatch.matchElementFiniteAutomata(element);
+            }
+        }
+        return elementMatch.getTokenRepo();
+    }
+
+
 
     private Stream<Match<Document>> documentThresholdMatching(Document document, Set<Match<Element>> matchingElements) {
         Map<Document, List<Match<Element>>> matches = matchingElements.stream()

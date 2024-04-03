@@ -1,7 +1,11 @@
 package features.characterFInder;
 
-import Data.UserEntityData;
+import algorithms.FiniteAutomata_Modified;
+import data.UserEntityData;
+import entity.CharacterEntity;
+import entity.UserEntity;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -45,10 +49,13 @@ public class CharacterFinder {
         return aux;
     }
 
-
     public static void main(String[] args) {
         CharacterFinder characterFinder = new CharacterFinder();
-        System.out.println(characterFinder.findCharacter(new UserEntity("Diego", 34, "oro", "las", CharacterEntity.AHRI)));
+        UserEntity userEntity = new UserEntity("Diego", 34, "plata", "las", CharacterEntity.AHRI);
+        for (String champName : characterFinder.findCharacter(userEntity)){
+            System.out.println("Te recomiendo jugar: " + champName);
+
+        }
     }
 
 

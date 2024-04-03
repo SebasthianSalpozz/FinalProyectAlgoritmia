@@ -1,4 +1,4 @@
-package features.characterFInder;
+package algorithms;
 
 import java.util.*;
 
