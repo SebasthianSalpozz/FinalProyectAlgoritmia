@@ -53,6 +53,10 @@ public enum ElementType {
                 return numberPreprocessing();
             case SERVER:
                 return serverNormalization();
+            /**
+             * Aqui lo que practicamente hace es que cuando el caso es `ELO`, se llama al método `eloPreprocessing()`
+             * Este método probablemente realiza un preprocesamiento específico para los valores de ELO
+             */
             case ELO:
                 return eloPreprocessing();
             default:

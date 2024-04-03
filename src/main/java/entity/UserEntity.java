@@ -84,6 +84,17 @@ public class UserEntity {
     public void addFriend (UserEntity u){
         this.friendList.add(u);
     }
+
+    /**
+     * Este método se llama `friendListRecomendation`. Su objetivo es generar una lista de recomendaciones de amigos para el usuario actual
+     * Primero, crea una lista vacía `friendListRecomendados` para almacenar las recomendaciones de amigos luego, recorre la lista de amigos 
+     * del usuario actual. Para cada amigo, recorre la lista de amigos de ese amigo.
+     * Si el amigo del amigo tiene el mismo ELO que el usuario actual y no está ya en la lista de amigos del usuario actual entonces se 
+     * considera para la recomendación
+     * Para cada amigo del amigo considerado se aplica una función de tokenización a su ELO Esta función se obtiene de `TokenizerElo.eloSoundexEncodeTokenizer()`
+     * Se verifica si el amigo del amigo y el usuario actual tienen tokens comunes. Si es así, el amigo del amigo se añade a la lista de recomendaciones de amigos.
+     * @return List<UserEntity> - La lista de recomendaciones de amigos.
+     */
     public List<UserEntity> friendListRecomendation() {
         List<UserEntity> friendListRecomendados = new ArrayList<>();
         for (UserEntity amigo : friendList) {

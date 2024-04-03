@@ -159,6 +159,9 @@ public class PreProcessFunction<T>{
         return obj -> obj;
     }
 
+    /**
+     * @return Function<String, String> - Una función que toma una cadena como entrada, elimina los dígitos al final y la convierte a minúsculas.
+     */
     public static Function<String, String> eloPreprocessing() {
         return (str) -> {
             str = str.replaceAll("\\d+$", "");

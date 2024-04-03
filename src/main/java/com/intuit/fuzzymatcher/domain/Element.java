@@ -105,10 +105,22 @@ public class Element<T> implements Matchable {
         return this.preProcessedValue;
     }
 
+    /**
+     * Este método se llama `getPreProcessedElo`. Su objetivo es obtener un valor preprocesado.
+     * 
+     * Primero, verifica si el valor preprocesado (`preProcessedValue`) es nulo. Si es así, entonces necesita calcularlo.
+     * 
+     * Si el valor actual (`this.value`) es una instancia de `String`, entonces aplica una función de preprocesamiento a este valor 
+     * después de aplicar la función de preprocesamiento, también se aplica la función `trim()` para eliminar los espacios en blanco 
+     * al principio y al final del valor procesado el resultado se establece como el nuevo `preProcessedValue`
+     * Si el valor actual no es una instancia de `String`, entonces simplemente aplica la función de preprocesamiento al valor actual 
+     * y establece el resultado como el nuevo `preProcessedValue`
+     * 
+     * @return T - El valor preprocesado.
+     */
     public T getPreProcessedElo(){
         if (this.preProcessedValue == null) {
             if (this.value instanceof String) {
-                // Default String pre-processing
                 Function<String, String> preProcessingFunc = (Function<String, String>) getPreProcessFunction();
                 setPreProcessedValue((T) preProcessingFunc.andThen(trim()).apply((String) this.value));
             } else {
