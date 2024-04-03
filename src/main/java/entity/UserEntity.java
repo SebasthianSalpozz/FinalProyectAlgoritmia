@@ -9,6 +9,8 @@ import com.intuit.fuzzymatcher.domain.ElementType;
 import com.intuit.fuzzymatcher.domain.Token;
 import com.intuit.fuzzymatcher.function.TokenizerElo;
 
+import static com.intuit.fuzzymatcher.domain.MatchType.EQUALITY;
+
 /**
  * Represents a user entity with basic information such as name, level, elo, server, and main characters.
  */
@@ -87,8 +89,8 @@ public class UserEntity {
             for (UserEntity amigoDeAmigo : amigo.friendList) {
                 if (amigoDeAmigo.elo.equals(this.elo) && !friendList.contains(amigoDeAmigo)) {
                     Function<Element<String>, Stream<Token<String>>> eloTokenizer = TokenizerElo.eloSoundexEncodeTokenizer();
-                    Stream<Token<String>> amigoDeAmigoTokens = eloTokenizer.apply(new Element<>(ElementType.ELO, "", amigoDeAmigo.elo, 1.0, 0.3, 0.9, null, null, null));
-                    Stream<Token<String>> thisTokens = eloTokenizer.apply(new Element<>(ElementType.ELO, "", this.elo, 1.0, 0.3, 0.9, null, null, null));
+                    Stream<Token<String>> amigoDeAmigoTokens = eloTokenizer.apply(new Element<>(ElementType.ELO, "", amigoDeAmigo.elo, 1.0, 0.3, 0.9, null, null, EQUALITY));
+                    Stream<Token<String>> thisTokens = eloTokenizer.apply(new Element<>(ElementType.ELO, "", this.elo, 1.0, 0.3, 0.9, null, null, EQUALITY));
                     boolean hasCommonTokens = amigoDeAmigoTokens.anyMatch(token -> thisTokens.anyMatch(t -> t.getValue().equals(token.getValue())));
                     if (hasCommonTokens) {
                         friendListRecomendados.add(amigoDeAmigo);
