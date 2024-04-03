@@ -80,6 +80,7 @@ public class UserEntity {
         return mainCharacters;
     }
 
+
     public void addFriend (UserEntity u){
         this.friendList.add(u);
     }
@@ -100,4 +101,5 @@ public class UserEntity {
         }
         return friendListRecomendados;
     }
+
 }
