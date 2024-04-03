@@ -1,4 +1,4 @@
-package com.intuit.fuzzymatcher.entity;
+package entity;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -5,8 +5,8 @@ import Data.UserEntityData;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.intuit.fuzzymatcher.entity.CharacterEntity;
-import com.intuit.fuzzymatcher.entity.UserEntity;
+import entity.CharacterEntity;
+import entity.UserEntity;
 
 /**
  * This class provides methods to find characters associated with users based on specific criteria.
