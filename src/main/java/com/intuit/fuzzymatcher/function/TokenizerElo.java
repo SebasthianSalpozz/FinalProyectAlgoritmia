@@ -10,10 +10,7 @@ import java.util.Arrays;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
-/**
- * A functional interface to Tokenize Elements
- */
-public class TokenizerFunction {
+public class TokenizerElo {
 
     private static final Soundex soundex = new Soundex();
 
@@ -26,32 +23,7 @@ public class TokenizerFunction {
                 .map(token -> new Token<String>(token, element));
     }
 
-    /**
-     * Returns a function to tokenize elements of type {@code String}.
-     *
-     * @return A function that takes a {@code Element<String>} as input and returns a stream of tokens corresponding to the preprocessed elements of the input element.
-     * of tokens corresponding to the preprocessed elements of the input element.
-     */
-    public static Function<Element<String>, Stream<Token<String>>> serveTokenizer() {
-        return new Function<Element<String>, Stream<Token<String>>>() {
-            /**
-             * Tokenizes the input element and returns a stream of tokens.
-             *
-             * @param element The element of type {@code Element<String>} to be tokenized.
-             * @return A stream of tokens corresponding to the preprocessed elements of the input element.
-             */
-            @Override
-            public Stream<Token<String>> apply(Element<String> element) {
-                String[] tokens = element.getPreProcessedValue().split(":");
-                Stream.Builder<Token<String>> tokenStreamBuilder = Stream.builder();
-                for (String token : tokens) {
-                    tokenStreamBuilder.add(new Token<>(token, element));
-                }
-                return tokenStreamBuilder.build();
-            }
-        };
-    }
-    public static Function<Element<String>, Stream<Token<String>>> wordSoundexEncodeTokenizer() {
+    public static Function<Element<String>, Stream<Token<String>>> eloSoundexEncodeTokenizer() {
         return (element) -> Arrays.stream(element.getPreProcessedValue().toString().split("\\s+"))
                 .map(val -> {
                     String code = val;
@@ -90,9 +62,5 @@ public class TokenizerFunction {
     
     public static Function<Element<String>, Stream<Token<String>>> chainTokenizers(Function<Element<String>, Stream<Token<String>>>... tokenizers) {
         return element -> Arrays.stream(tokenizers).flatMap(fun -> fun.apply(element));
-    }
-
-    public static Function<Element<String>, Stream<Token<String>>> noneTokenizer() {
-        return (element) -> Stream.of(new Token<>(element.getPreProcessedValue(), element));
     }
 }

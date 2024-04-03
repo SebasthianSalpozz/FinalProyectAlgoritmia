@@ -4,7 +4,6 @@ import com.intuit.fuzzymatcher.component.Dictionary;
 import com.intuit.fuzzymatcher.util.Utils;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.Objects;
 import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -142,11 +141,28 @@ public class PreProcessFunction<T>{
     }
 
     /**
+     * Returns a function to normalize server names.
+     *
+     * @return A function that takes a {@code String} as input and returns its normalized form.
+     * corresponding to the server dictionary.
+     */
+    public static Function<String, String> serverNormalization() {
+        return str -> Utils.getNormalizedString(str, Dictionary.serversDictionary);
+    }
+
+    /**
      * Does nothing, used for already preprocessed values
      *
      * @return PreProcessFunction
      */
     public static Function none() {
         return obj -> obj;
+    }
+
+    public static Function<String, String> eloPreprocessing() {
+        return (str) -> {
+            str = str.replaceAll("\\d+$", "");
+            return str.toLowerCase();
+        };
     }
 }

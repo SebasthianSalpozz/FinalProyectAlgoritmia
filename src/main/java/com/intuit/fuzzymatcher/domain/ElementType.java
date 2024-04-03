@@ -1,13 +1,22 @@
 package com.intuit.fuzzymatcher.domain;
 
 
+import com.intuit.fuzzymatcher.component.MatchService;
+import com.intuit.fuzzymatcher.function.PreProcessFunction;
+import com.intuit.fuzzymatcher.function.TokenizerFunction;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static com.intuit.fuzzymatcher.domain.MatchType.EQUALITY;
 import static com.intuit.fuzzymatcher.domain.MatchType.NEAREST_NEIGHBORS;
 import static com.intuit.fuzzymatcher.function.PreProcessFunction.*;
 import static com.intuit.fuzzymatcher.function.TokenizerFunction.*;
+import static com.intuit.fuzzymatcher.function.TokenizerElo.eloSoundexEncodeTokenizer;
 
 /**
  * Enum to define different types of Element.
@@ -22,7 +31,10 @@ public enum ElementType {
     PHONE,
     NUMBER,
     DATE,
-    AGE;
+    AGE,
+    SERVER,
+    ELO;
+
 
     protected Function getPreProcessFunction() {
         switch (this) {
@@ -39,6 +51,10 @@ public enum ElementType {
             case NUMBER:
             case AGE:
                 return numberPreprocessing();
+            case SERVER:
+                return serverNormalization();
+            case ELO:
+                return eloPreprocessing();
             default:
                 return none();
         }
@@ -56,6 +72,10 @@ public enum ElementType {
                 return triGramTokenizer();
             case PHONE:
                 return decaGramTokenizer();
+            case SERVER:
+                return serveTokenizer();
+            case ELO:
+                return eloSoundexEncodeTokenizer();
             default:
                 return valueTokenizer();
         }
