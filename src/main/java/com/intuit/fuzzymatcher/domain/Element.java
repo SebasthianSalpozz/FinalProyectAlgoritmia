@@ -105,6 +105,19 @@ public class Element<T> implements Matchable {
         return this.preProcessedValue;
     }
 
+    public T getPreProcessedElo(){
+        if (this.preProcessedValue == null) {
+            if (this.value instanceof String) {
+                // Default String pre-processing
+                Function<String, String> preProcessingFunc = (Function<String, String>) getPreProcessFunction();
+                setPreProcessedValue((T) preProcessingFunc.andThen(trim()).apply((String) this.value));
+            } else {
+                setPreProcessedValue(getPreProcessFunction().apply(this.value));
+            }
+        }
+        return this.preProcessedValue;
+    }
+
     public AbstractMap.SimpleEntry getPreprocessedValueWithType() {
         return new AbstractMap.SimpleEntry(this.getElementClassification(), this.getPreProcessedValue());
     }
